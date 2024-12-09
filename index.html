@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>buat ka adit</title>
+    <script src="vara.min.js"></script>
+    <script src="ka radir.js"></script>
+    <link rel="stylesheet" href="ka radit.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: linear-gradient(0.25turn, rgb(225, 108, 192), rgb(225, 108, 192));
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            color: black;
+        }
+        #container {
+            width: 80%;
+            margin: 20px auto;
+            min-height: 650px;
+            margin-top: 150px;
+            color: black;
+        }
+        @media screen and (max-width: 400px) {
+            #container {
+                width: 100%;
+                margin: 50% auto;
+                min-height: 800px;
+            }
+        }
+        .wrapper {
+            position: fixed;
+        }
+        .box div {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background-color: transparent;
+            border: 6px solid rgba(255, 255, 255, 0.8);
+        }
+        .box div:nth-child(1) {
+            top: 12%;
+            left: 42%;
+            animation: animate 10s linear infinite;
+        }
+        .box div:nth-child(2) {
+            top: 70%;
+            left: 50%;
+            animation: animate 7s linear infinite;
+        }
+        .box div:nth-child(3) {
+            top: 17%;
+            left: 6%;
+            animation: animate 9s linear infinite;
+        }
+        .box div:nth-child(4) {
+            top: 20%;
+            left: 60%;
+            animation: animate 10s linear infinite;
+        }
+        .box div:nth-child(5) {
+            top: 67%;
+            left: 10%;
+            animation: animate 6s linear infinite;
+        }
+        .box div:nth-child(6) {
+            top: 80%;
+            left: 70%;
+            animation: animate 12s linear infinite;
+        }
+        .box div:nth-child(7) {
+            top: 60%;
+            left: 80%;
+            animation: animate 15s linear infinite;
+        }
+        .box div:nth-child(8) {
+            top: 32%;
+            left: 25%;
+            animation: animate 16s linear infinite;
+        }
+        .box div:nth-child(9) {
+            top: 90%;
+            left: 25%;
+            animation: animate 9s linear infinite;
+        }
+        .box div:nth-child(10) {
+            top: 20%;
+            left: 80%;
+            animation: animate 5s linear infinite;
+        }
+        @keyframes animate {
+            0% {
+                transform: scale(0) translateY(0) rotate(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.3) translateY(-90px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Message Box -->
+    <div id="messageBox" class="message-box">
+        <div class="message-content">
+            <p>Mau pake musik ga kak?</p>
+            <button id="yesBtn">mauu deh</button>
+            <button id="noBtn">engga mau</button>
+        </div>
+    </div>
+
+    <!-- Audio Player (default paused) -->
+    <audio id="audioPlayer" src="karaditsong.mp3" preload="auto"></audio>
+
+    <div id="container"></div>
+    <div class="wrapper">
+        <div class="box">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script>
+        // Menyembunyikan semua elemen terkait program utama hingga pengguna memilih "Yes" atau "No"
+        var audioPlayer = document.getElementById('audioPlayer');
+        var messageBox = document.getElementById('messageBox');
+        var yesBtn = document.getElementById('yesBtn');
+        var noBtn = document.getElementById('noBtn');
+
+        // Menampilkan message box saat halaman pertama kali dimuat
+        window.onload = function() {
+            messageBox.style.display = 'block';
+        };
+
+        // Fungsi jika pengguna memilih "Yes"
+        yesBtn.addEventListener('click', function() {
+            audioPlayer.play(); // Memutar musik
+            messageBox.style.display = 'none'; // Menyembunyikan message box
+            startVaraAnimation(); // Mulai animasi teks Vara
+        });
+
+        // Fungsi jika pengguna memilih "No"
+        noBtn.addEventListener('click', function() {
+            audioPlayer.pause(); // Tidak memutar musik
+            audioPlayer.currentTime = 0; // Reset waktu musik ke awal
+            messageBox.style.display = 'none'; // Menyembunyikan message box
+            startVaraAnimation(); // Mulai animasi teks Vara meskipun musik tidak diputar
+        });
+
+        // Fungsi untuk memulai animasi Vara
+        function startVaraAnimation() {
+            var fontSize = 40;
+            if (window.screen.width > 700) fontSize = 55;
+            else if (window.screen.width > 1200) fontSize = 80;
+
+            var vara = new Vara(
+                "#container",
+                "https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Satisfy/SatisfySL.json",
+                [
+                    { text: "haii kak radittt ^^", y: 150, delay: 900, fromCurrentPosition: { y: false }, duration: 1700 },
+                    { text: "mau minta waktunya 30 detik bolehh yaww hehe>.<", y: 150, fromCurrentPosition: { y: false }, delay: 1000, duration: 3200 },
+                    { text: "mau nanya dong kak", y: 150, fromCurrentPosition: { y: false }, delay: 1500, duration: 2200 },
+                    { text: "kaka emang orangnya penuh teka teki gitu kahh??", y: 150, fromCurrentPosition: { y: false }, delay: 1000, duration: 2500 },
+                    { text: "soalnyaaa kata teman kaka sifat kaka susah ditebak hehe", y: 150, fromCurrentPosition: { y: false }, delay: 1500, duration: 2500 },
+                    { text: "karenaa kaka susah ditebak aku jadi tertarik hehe...^o^", y: 150, fromCurrentPosition: { y: false }, delay: 1500, duration: 3300 },
+                    { text: "mungkin kakaa risih atau bingunggg tapi mungkin kita bisa mulai berteman??", y: 150, fromCurrentPosition: { y: false }, delay: 1500, duration: 3000 },
+                    { text: "tapi kalo mau lebih dari teman juga boleh kok(^///^)", y: 150, fromCurrentPosition: { y: false }, delay: 1000, duration: 3200 },
+                    { text: "UDAH DEHH ITUU AJA", y: 150, fromCurrentPosition: { y: false }, delay: 1000, duration: 3200 },
+                    { text: "SEMANGATTTT MAGANNGNYAAA YAWWW>@_@<", y: 150, fromCurrentPosition: { y: false }, delay: 1000, duration: 3200 }
+                ],
+                {
+                    strokeWidth: 2,
+                    color: "#fff",
+                    fontSize: fontSize,
+                    textAlign: "center"
+                }
+            );
+
+            vara.ready(function() {
+                vara.animationEnd(function(i, o) {
+                    o.container.style.transition = "opacity 1s 1s";
+                    o.container.style.opacity = 0;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
